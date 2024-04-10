@@ -2,4 +2,10 @@
 
 *.csv
 
+*.nbconvert.*
+
 .ipynb_checkpoints/
+
+backup.*
+
+*.pth

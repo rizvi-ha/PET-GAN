@@ -6,7 +6,7 @@ import sys
 def save_notebook(nb, f):
     global should_continue
     if should_continue:
-        threading.Timer(10.0, save_notebook).start()
+        threading.Timer(10.0, save_notebook, [nb, f]).start()
     with open(sys.argv[2] + '.ipynb', 'w', encoding='utf-8') as f:
         nbformat.write(nb, f)
 
@@ -18,6 +18,7 @@ def main():
     nb = nbformat.read(f, as_version=4)
     ep = ExecutePreprocessor(kernel_name='python3')
 
+    should_continue = True
     save_notebook(nb, f)
 
     ep.preprocess(nb)
